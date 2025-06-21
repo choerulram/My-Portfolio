@@ -14,29 +14,44 @@ const About = () => (
               className="w-36 h-36 rounded-2xl object-cover"
             />
           </div>
-          <div className="mt-2 text-center text-secondary text-lg font-semibold">Nama Anda</div>
+          <div className="mt-2 text-center text-secondary text-lg font-semibold">
+            Nama Anda
+          </div>
         </div>
         {/* Konten About */}
         <div className="md:col-span-2 flex flex-col gap-8">
           {/* Profil Lengkap */}
           <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 mb-2">
-            <h2 className="text-xl font-bold text-highlight mb-2">Profil Lengkap</h2>
+            <h2 className="text-xl font-bold text-highlight mb-2">
+              Profil Lengkap
+            </h2>
             <p className="text-base opacity-90">
-              Saya memulai perjalanan di dunia teknologi sejak kuliah di Teknik Informatika. Berpengalaman dalam pengembangan web modern, saya telah mengerjakan berbagai proyek mulai dari website company profile hingga aplikasi dashboard interaktif.
+              Saya memulai perjalanan di dunia teknologi sejak kuliah di Teknik
+              Informatika. Berpengalaman dalam pengembangan web modern, saya
+              telah mengerjakan berbagai proyek mulai dari website company
+              profile hingga aplikasi dashboard interaktif.
             </p>
           </section>
           {/* Value & Passion */}
           <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 mb-2">
-            <h2 className="text-xl font-bold text-highlight mb-2">Value & Passion</h2>
+            <h2 className="text-xl font-bold text-highlight mb-2">
+              Value & Passion
+            </h2>
             <p className="text-base opacity-90">
-              Saya sangat menikmati proses menciptakan antarmuka yang tidak hanya indah, tapi juga mudah digunakan. Passion saya adalah menggabungkan teknologi dan desain untuk memberikan pengalaman terbaik bagi pengguna.
+              Saya sangat menikmati proses menciptakan antarmuka yang tidak
+              hanya indah, tapi juga mudah digunakan. Passion saya adalah
+              menggabungkan teknologi dan desain untuk memberikan pengalaman
+              terbaik bagi pengguna.
             </p>
           </section>
           {/* Hobi/Personal Interest */}
           <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6">
-            <h2 className="text-xl font-bold text-highlight mb-2">Hobi & Minat Pribadi</h2>
+            <h2 className="text-xl font-bold text-highlight mb-2">
+              Hobi & Minat Pribadi
+            </h2>
             <p className="text-base opacity-90">
-              Di luar dunia coding, saya suka fotografi, membaca buku pengembangan diri, dan bersepeda santai di akhir pekan.
+              Di luar dunia coding, saya suka fotografi, membaca buku
+              pengembangan diri, dan bersepeda santai di akhir pekan.
             </p>
           </section>
         </div>
