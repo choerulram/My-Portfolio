@@ -27,10 +27,22 @@ const Header = () => (
           About
         </a>
         <a
+          href="/skills"
+          className="px-3 py-1 rounded-full font-medium text-light dark:text-highlight hover:bg-highlight hover:text-main transition"
+        >
+          Skills
+        </a>
+        <a
           href="/projects"
           className="px-3 py-1 rounded-full font-medium text-light dark:text-highlight hover:bg-highlight hover:text-main transition"
         >
           Projects
+        </a>
+        <a
+          href="/resume"
+          className="px-3 py-1 rounded-full font-medium text-light dark:text-highlight hover:bg-highlight hover:text-main transition"
+        >
+          Resume/CV
         </a>
         <a
           href="/contact"
