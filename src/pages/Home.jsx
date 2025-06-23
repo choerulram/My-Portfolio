@@ -1,6 +1,6 @@
 import React from "react";
-import Badge3DCanvas from "../components/Badge3DCanvas";
-// eslint-disable-next-line
+import Lanyard from "../components/Lanyard";
+import AnimatedContent from "../components/Animations/AnimatedContent/AnimatedContent";
 import { motion } from "framer-motion";
 
 const socialLinks = [
@@ -37,8 +37,25 @@ const Home = () => (
       {/* Split Layout Desktop Improved with 3D Lanyard Badge */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-row items-center justify-center gap-20 px-12 py-24">
         {/* Kiri: 3D Lanyard Badge & Social */}
-        <div className="flex flex-col items-center w-2/5 max-w-md gap-12">
-          <Badge3DCanvas />
+        <div
+          className="flex flex-col items-center w-2/5 max-w-md gap-12 relative"
+          style={{ paddingTop: 670 }}
+        >
+          {/* Badge 3D: lanyard benar-benar mentok ke atas */}
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: 480,
+              zIndex: 20,
+              display: "flex",
+              justifyContent: "center",
+              pointerEvents: "auto",
+            }}
+          >
+            <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+          </div>
           {/* Social Links */}
           <div className="flex flex-col gap-5 mt-4">
             {socialLinks.map((s) => (
@@ -48,6 +65,7 @@ const Home = () => (
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 border border-highlight/30 text-secondary hover:bg-highlight/20 hover:text-highlight shadow-md backdrop-blur transition text-lg font-semibold"
+                style={{ pointerEvents: "auto" }}
               >
                 {s.icon}
                 {s.label}
@@ -56,47 +74,49 @@ const Home = () => (
           </div>
         </div>
         {/* Kanan: Bio & CTA */}
-        <motion.div
-          initial={{ x: 60, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-3/5 max-w-2xl"
-        >
-          <div className="w-full px-14 py-16 rounded-3xl shadow-2xl border border-highlight/30 bg-white/10 backdrop-blur-lg flex flex-col items-center">
-            <h1 className="text-6xl lg:text-7xl font-extrabold mb-4 text-highlight drop-shadow-lg text-center leading-tight">
-              Nama Anda
-            </h1>
-            <h2 className="text-2xl lg:text-3xl font-semibold mb-8 text-secondary text-center">
-              Frontend Developer & UI/UX Enthusiast
-            </h2>
-            <p className="text-xl lg:text-2xl mb-12 text-center max-w-xl opacity-90 leading-relaxed">
-              Saya adalah seorang developer yang berfokus pada pembuatan
-              antarmuka modern, responsif, dan user-friendly. Passion saya di
-              bidang teknologi dan desain membantu saya menciptakan solusi
-              digital yang impactful dan estetik.
-            </p>
-            <div className="flex flex-row gap-8 w-full justify-center">
-              <a
-                href="/projects"
-                className="bg-highlight text-main font-bold px-10 py-4 rounded-full shadow hover:bg-secondary transition text-center text-xl"
-              >
-                Lihat Proyek
-              </a>
-              <a
-                href="/resume"
-                className="border-2 border-highlight text-highlight px-10 py-4 rounded-full font-bold shadow hover:bg-highlight hover:text-main transition text-center text-xl"
-              >
-                Resume/CV
-              </a>
-              <a
-                href="/contact"
-                className="bg-main text-highlight font-bold px-10 py-4 rounded-full shadow hover:bg-highlight hover:text-main border-2 border-highlight transition text-center text-xl"
-              >
-                Kontak Saya
-              </a>
+        <AnimatedContent>
+          <motion.div
+            initial={{ x: 60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-3/5 max-w-2xl"
+          >
+            <div className="w-full px-14 py-16 rounded-3xl shadow-2xl border border-highlight/30 bg-white/10 backdrop-blur-lg flex flex-col items-center">
+              <h1 className="text-6xl lg:text-7xl font-extrabold mb-4 text-highlight drop-shadow-lg text-center leading-tight">
+                Nama Anda
+              </h1>
+              <h2 className="text-2xl lg:text-3xl font-semibold mb-8 text-secondary text-center">
+                Frontend Developer & UI/UX Enthusiast
+              </h2>
+              <p className="text-xl lg:text-2xl mb-12 text-center max-w-xl opacity-90 leading-relaxed">
+                Saya adalah seorang developer yang berfokus pada pembuatan
+                antarmuka modern, responsif, dan user-friendly. Passion saya di
+                bidang teknologi dan desain membantu saya menciptakan solusi
+                digital yang impactful dan estetik.
+              </p>
+              <div className="flex flex-row gap-8 w-full justify-center">
+                <a
+                  href="/projects"
+                  className="bg-highlight text-main font-bold px-10 py-4 rounded-full shadow hover:bg-secondary transition text-center text-xl"
+                >
+                  Lihat Proyek
+                </a>
+                <a
+                  href="/resume"
+                  className="border-2 border-highlight text-highlight px-10 py-4 rounded-full font-bold shadow hover:bg-highlight hover:text-main transition text-center text-xl"
+                >
+                  Resume/CV
+                </a>
+                <a
+                  href="/contact"
+                  className="bg-main text-highlight font-bold px-10 py-4 rounded-full shadow hover:bg-highlight hover:text-main border-2 border-highlight transition text-center text-xl"
+                >
+                  Kontak Saya
+                </a>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </AnimatedContent>
       </div>
     </main>
   </div>
