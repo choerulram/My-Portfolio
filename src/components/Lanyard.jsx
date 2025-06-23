@@ -30,9 +30,10 @@ export default function Lanyard({
   gravity = [0, -40, 0],
   fov = 20,
   transparent = true,
+  lanyardPosition = [2, 4, 0],
 }) {
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-0 w-full h-screen flex justify-end items-end transform scale-100 origin-end">
       <Canvas
         camera={{ position: position, fov: fov }}
         gl={{ alpha: transparent }}
@@ -42,7 +43,7 @@ export default function Lanyard({
       >
         <ambientLight intensity={Math.PI} />
         <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+          <Band lanyardPosition={lanyardPosition} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -79,7 +80,7 @@ export default function Lanyard({
   );
 }
 
-function Band({ maxSpeed = 50, minSpeed = 0 }) {
+function Band({ maxSpeed = 50, minSpeed = 0, lanyardPosition = [2, 4, 0] }) {
   const band = useRef(),
     fixed = useRef(),
     j1 = useRef(),
@@ -180,7 +181,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={lanyardPosition}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -253,6 +254,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
 Band.propTypes = {
   maxSpeed: PropTypes.number,
   minSpeed: PropTypes.number,
+  lanyardPosition: PropTypes.array,
 };
 
 Lanyard.propTypes = {
@@ -260,4 +262,5 @@ Lanyard.propTypes = {
   gravity: PropTypes.array,
   fov: PropTypes.number,
   transparent: PropTypes.bool,
+  lanyardPosition: PropTypes.array,
 };
