@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-// eslint-disable-next-line
 import { motion } from "framer-motion";
 
 const navLinks = [
@@ -19,30 +18,22 @@ const Header = () => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="bg-main dark:bg-dark text-light dark:text-highlight shadow-lg sticky top-0 z-50"
+      className="bg-main dark:bg-dark text-light dark:text-highlight shadow-xl sticky top-0 z-50 border-b-2 border-b-gray-200/60 dark:border-b-gray-700/60"
     >
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <motion.div
           initial={{ x: -40, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
-          className="flex items-center space-x-3"
+          className="flex items-center"
         >
-          <motion.img
-            src="/profile.jpg"
-            alt="Logo"
-            className="w-10 h-10 rounded-full border-2 border-highlight shadow"
-            initial={{ scale: 0.7, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
-          />
           <motion.span
             className="text-2xl font-extrabold tracking-tight text-light dark:text-highlight drop-shadow"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
           >
-            Nama Anda
+            Achmad Choerul R.
           </motion.span>
         </motion.div>
         <motion.nav
