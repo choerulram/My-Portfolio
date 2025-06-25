@@ -11,6 +11,27 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+// Variants for staggered animation
+const navVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.13,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const linkVariants = {
+  hidden: { opacity: 0, y: -20, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 400, damping: 20 },
+  },
+};
+
 const Header = () => {
   const location = useLocation();
   return (
@@ -22,27 +43,36 @@ const Header = () => {
     >
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <motion.div
-          initial={{ x: -40, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: -40, opacity: 0, scale: 0.95 }}
+          animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
           className="flex items-center"
         >
           <motion.span
-            className="text-2xl font-extrabold tracking-tight text-light dark:text-highlight drop-shadow"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
+            className="text-2xl font-extrabold tracking-tight text-light dark:text-highlight drop-shadow-[0_2px_16px_rgba(255,255,255,0.7)] dark:drop-shadow-[0_2px_16px_rgba(0,255,255,0.5)] relative"
+            initial={{ opacity: 0, x: -20, scale: 0.95, filter: "blur(2px)" }}
+            animate={{ opacity: 1, x: 0, scale: 1, filter: "blur(0px)" }}
+            transition={{
+              delay: 0.6,
+              duration: 0.5,
+              type: "spring",
+              stiffness: 300,
+            }}
+            whileHover={{
+              scale: 1.08,
+              textShadow: "0px 0px 16px #fff, 0px 0px 32px #00eaff",
+            }}
           >
             Achmad Choerul R.
           </motion.span>
         </motion.div>
         <motion.nav
           className="flex space-x-2 md:space-x-6 bg-white/10 dark:bg-dark/30 rounded-full px-4 py-2 shadow-md backdrop-blur"
-          initial={{ x: 40, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+          variants={navVariants}
+          initial="hidden"
+          animate="show"
         >
-          {navLinks.map((link, i) => {
+          {navLinks.map((link) => {
             const isActive =
               location.pathname === link.href ||
               (link.href !== "/" && location.pathname.startsWith(link.href));
@@ -50,24 +80,28 @@ const Header = () => {
               <motion.a
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-1 rounded-full font-medium transition ${
+                variants={linkVariants}
+                className={`relative px-3 py-1 rounded-full font-medium transition focus:outline-none group overflow-hidden ${
                   isActive
                     ? "bg-highlight text-main shadow-lg"
                     : "text-light dark:text-highlight hover:bg-highlight hover:text-main"
                 }`}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.96 }}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 20,
-                  delay: 0.5 + i * 0.07,
-                  duration: 0.4,
-                }}
               >
-                {link.label}
+                <span className="relative z-10">{link.label}</span>
+                {/* Underline/Highlight Animation */}
+                <motion.span
+                  layoutId="underline"
+                  className={`absolute left-3 right-3 bottom-1 h-[3px] rounded-full bg-highlight/80 group-hover:bg-highlight/90 ${
+                    isActive ? "" : "opacity-0 group-hover:opacity-100"
+                  }`}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: isActive ? 1 : 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  style={{ originX: 0 }}
+                />
               </motion.a>
             );
           })}
