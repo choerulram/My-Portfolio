@@ -2,42 +2,46 @@ import React from "react";
 
 const education = [
   {
-    school: "Universitas Teknologi Indonesia",
-    major: "Teknik Informatika",
-    year: "2018 - 2022",
+    school: "Politeknik Negeri Cilacap",
+    major: "D3 Teknik Informatika",
+    year: "2022 - 2025",
+    gpa: "3.69",
   },
   {
-    school: "SMA Negeri 1 Bandung",
-    major: "IPA",
-    year: "2015 - 2018",
+    school: "SMK Ma'arif 1 Kroya",
+    major: "Teknik Kendaraan Ringan Otomotif",
+    year: "2019 - 2022",
   },
 ];
 
 const experience = [
   {
-    company: "PT Digital Kreatif",
-    position: "Frontend Developer",
-    year: "2023 - Sekarang",
-    desc: "Membangun dan mengelola aplikasi web modern dengan React dan Tailwind CSS, berkolaborasi dengan tim UI/UX dan backend.",
+    company: "PT. Metafora Indonesia Teknologi",
+    position: "Intern - Junior Web Developer",
+    year: "Agustus 2024 - Desember 2024",
+    desc: "Magang sebagai Junior Web Developer: mengembangkan fitur front-end, back-end, dan database menggunakan CodeIgniter serta membantu developer senior dalam proses pengembangan.",
   },
   {
-    company: "Freelance",
-    position: "Web Developer",
-    year: "2021 - 2023",
-    desc: "Mengerjakan berbagai proyek website landing page, company profile, dan dashboard untuk klien lokal dan internasional.",
+    company: "Coding Camp 2025 (DBS Foundation)",
+    position: "Learning Path: Front-end & Back-end Developer",
+    year: "Februari - Juli 2025",
+    desc: "Mengikuti learning path Front-end & Back-end Developer — membangun proyek akhir full-stack, mempelajari best practice deployment, dan menerima mentoring dari profesional.",
   },
 ];
 
 const organizations = [
   {
-    name: "Himpunan Mahasiswa Informatika",
-    role: "Staff IT & Media",
-    year: "2019 - 2021",
+    name: "Protic (Programming Technology Informatics Club)",
+    role: "Divisi Web - Anggota",
+    year: "2023 - 2024",
+    desc: `Bertanggung jawab sebagai asisten mentor dalam study jams Protic untuk kelas Web Basic dan
+    mengembangkan website untuk kebutuhan Protic, termasuk fitur dan desain untuk meningkatkan pengalaman pengguna.`,
   },
   {
-    name: "Komunitas Coding Bandung",
-    role: "Volunteer Mentor",
-    year: "2022 - Sekarang",
+    name: "Teaching Factory JKB - Politeknik Negeri Cilacap",
+    role: "Pengembang Web",
+    year: "2023 - 2024",
+    desc: `Bertanggung jawab dalam pengembangan salah satu proyek JKB ERP menggunakan Laravel; berpartisipasi dalam perencanaan tim, menganalisis kebutuhan pengguna, dan menerapkan perubahan/peningkatan berdasarkan umpan balik.`,
   },
 ];
 
@@ -71,6 +75,11 @@ const Resume = () => (
                   <span className="block text-sm text-highlight">
                     {edu.major}
                   </span>
+                  {edu.gpa && (
+                    <span className="block text-xs text-white opacity-90">
+                      IPK: {edu.gpa}
+                    </span>
+                  )}
                 </div>
                 <span className="text-sm text-highlight">{edu.year}</span>
               </li>
@@ -80,7 +89,7 @@ const Resume = () => (
         {/* Pengalaman Kerja */}
         <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6">
           <h2 className="text-xl font-bold text-highlight mb-4">
-            Pengalaman Kerja
+            Pengalaman & Magang
           </h2>
           <ul className="space-y-4">
             {experience.map((exp) => (
@@ -100,7 +109,7 @@ const Resume = () => (
         {/* Organisasi/Volunteer */}
         <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6">
           <h2 className="text-xl font-bold text-highlight mb-4">
-            Organisasi & Volunteer
+            Organisasi & Kegiatan
           </h2>
           <ul className="space-y-4">
             {organizations.map((org) => (
@@ -108,13 +117,18 @@ const Resume = () => (
                 key={org.name}
                 className="flex flex-col md:flex-row md:items-center md:justify-between"
               >
-                <div>
+                <div className="flex-1">
                   <span className="font-semibold text-secondary">
                     {org.name}
                   </span>
                   <span className="block text-sm text-highlight">
                     {org.role}
                   </span>
+                  {org.desc && (
+                    <p className="text-sm opacity-80 mt-1 whitespace-pre-line">
+                      {org.desc}
+                    </p>
+                  )}
                 </div>
                 <span className="text-sm text-highlight">{org.year}</span>
               </li>
