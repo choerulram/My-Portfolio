@@ -1,64 +1,99 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 8 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.12, ease: "easeOut", duration: 0.6 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const About = () => (
   <div className="min-h-screen flex flex-col bg-dark text-light">
     <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-16 px-4">
       {/* Liquid Glass Section */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+      <motion.div
+        className="relative z-10 w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
         {/* Foto/Ilustrasi */}
-        <div className="md:col-span-1 flex flex-col items-center justify-start">
-          <div className="w-40 h-40 rounded-2xl border-4 border-highlight shadow-lg bg-white/10 backdrop-blur-lg flex items-center justify-center mb-6">
-            <img
-              src="https://randomuser.me/api/portraits/men/32.jpg"
-              alt="Profile"
-              className="w-36 h-36 rounded-2xl object-cover"
+        <motion.div
+          className="md:col-span-1 flex flex-col items-center justify-start"
+          variants={itemVariants}
+        >
+          <motion.div
+            className="w-56 h-56 rounded-3xl border-4 border-secondary shadow-2xl bg-secondary/6 backdrop-blur-lg flex items-center justify-center mb-6"
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 280 }}
+          >
+            <motion.img
+              src="public/assets/images/profile.jpg"
+              alt="Foto Profil"
+              className="w-52 h-52 rounded-3xl object-cover shadow-inner"
+              initial={{ scale: 0.98 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
             />
-          </div>
-          <div className="mt-2 text-center text-secondary text-lg font-semibold">
-            Nama Anda
-          </div>
-        </div>
+          </motion.div>
+          <motion.div
+            className="mt-2 text-center text-secondary text-2xl font-bold"
+            variants={itemVariants}
+          >
+            Achmad Choerul Ramdhani
+          </motion.div>
+          <motion.div
+            className="text-center text-sm text-muted mt-1"
+            variants={itemVariants}
+          >
+            Lulusan Baru
+          </motion.div>
+
+          <motion.div className="mt-6 w-full px-4" variants={itemVariants}>
+            <div className="text-center p-3 rounded-lg bg-gradient-to-r from-secondary/10 via-secondary/8 to-secondary/10 border border-secondary/10">
+              <div className="text-sm text-muted">Siap untuk kontribusi</div>
+              <div className="font-medium">
+                Mencari kesempatan sebagai Pengembang Web Junior
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
         {/* Konten About */}
-        <div className="md:col-span-2 flex flex-col gap-8">
-          {/* Profil Lengkap */}
-          <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 mb-2">
-            <h2 className="text-xl font-bold text-highlight mb-2">
-              Profil Lengkap
+        <div className="md:col-span-1 flex flex-col gap-6">
+          {/* Tentang Saya */}
+          <motion.section
+            className="bg-gradient-to-br from-secondary/15 via-secondary/10 to-secondary/5 backdrop-blur-lg rounded-2xl border-2 border-secondary/30 shadow-[0_0_30px_-5px_rgba(206,237,178,0.2)] p-8 flex flex-col justify-center ring-1 ring-secondary/30 hover:shadow-[0_0_40px_-5px_rgba(206,237,178,0.25)] transition-shadow duration-300"
+            variants={itemVariants}
+          >
+            <h2 className="text-3xl md:text-4xl font-extrabold text-secondary mb-4 drop-shadow-[0_0_8px_rgba(206,237,178,0.3)]">
+              Tentang Saya
             </h2>
-            <p className="text-base opacity-90">
-              Saya memulai perjalanan di dunia teknologi sejak kuliah di Teknik
-              Informatika. Berpengalaman dalam pengembangan web modern, saya
-              telah mengerjakan berbagai proyek mulai dari website company
-              profile hingga aplikasi dashboard interaktif.
+            <p className="text-lg md:text-xl text-light opacity-100 leading-relaxed mb-4">
+              Saya adalah seorang lulusan baru Jurusan Teknik Informatika dari
+              Politeknik Negeri Cilacap yang memiliki ketertarikan kuat pada
+              bidang pengembangan web dan teknologi informasi.
             </p>
-          </section>
-          {/* Value & Passion */}
-          <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 mb-2">
-            <h2 className="text-xl font-bold text-highlight mb-2">
-              Value & Passion
-            </h2>
-            <p className="text-base opacity-90">
-              Saya sangat menikmati proses menciptakan antarmuka yang tidak
-              hanya indah, tapi juga mudah digunakan. Passion saya adalah
-              menggabungkan teknologi dan desain untuk memberikan pengalaman
-              terbaik bagi pengguna.
+            <p className="text-base md:text-lg text-light opacity-95">
+              Selama lebih dari tiga tahun, saya telah mengasah kemampuan di
+              bidang pemrograman dan pengembangan aplikasi web. Saya
+              berpengalaman menggunakan Laravel, CodeIgniter, dan React.js untuk
+              membangun solusi web yang interaktif, efisien, dan berorientasi
+              pada kebutuhan pengguna.
             </p>
-          </section>
-          {/* Hobi/Personal Interest */}
-          <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6">
-            <h2 className="text-xl font-bold text-highlight mb-2">
-              Hobi & Minat Pribadi
-            </h2>
-            <p className="text-base opacity-90">
-              Di luar dunia coding, saya suka fotografi, membaca buku
-              pengembangan diri, dan bersepeda santai di akhir pekan.
-            </p>
-          </section>
+          </motion.section>
         </div>
-      </div>
+      </motion.div>
       {/* Liquid Glass Background Effect */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-96 h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
       </div>
     </main>
