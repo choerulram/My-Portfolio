@@ -157,22 +157,26 @@ const Projects = () => {
                     ))}
                   </div>
                   <div className="flex gap-3 mt-auto">
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-full bg-highlight text-main font-semibold shadow hover:bg-secondary transition text-sm"
-                    >
-                      Demo
-                    </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-full border border-highlight text-highlight font-semibold hover:bg-highlight hover:text-main transition text-sm"
-                    >
-                      GitHub
-                    </a>
+                    {project.demo && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-full bg-highlight text-main font-semibold shadow hover:bg-secondary transition text-sm"
+                      >
+                        Demo
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 rounded-full border border-highlight text-highlight font-semibold hover:bg-highlight hover:text-main transition text-sm"
+                      >
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
