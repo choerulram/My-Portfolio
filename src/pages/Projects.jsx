@@ -108,15 +108,15 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-dark text-light">
-      <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-16 px-4">
+      <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-10 md:py-16 px-2 md:px-4">
         <div className="max-w-6xl w-full mx-auto">
           {/* Filter */}
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center mb-6 md:mb-10">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelected(cat)}
-                className={`px-5 py-2 rounded-full font-semibold border transition backdrop-blur shadow-sm text-sm
+                className={`px-3 md:px-5 py-1.5 md:py-2 rounded-full font-semibold border transition backdrop-blur shadow-sm text-xs md:text-sm
                   ${
                     selected === cat
                       ? "bg-highlight text-main border-highlight"
@@ -128,7 +128,7 @@ const Projects = () => {
             ))}
           </div>
           {/* Project Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {filtered.map((project) => (
               <div
                 key={project.name}
@@ -137,32 +137,32 @@ const Projects = () => {
                 <img
                   src={project.img}
                   alt={project.name}
-                  className="w-full h-40 object-cover"
+                  className="w-full h-32 md:h-40 object-cover"
                 />
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-bold text-highlight mb-1">
+                <div className="p-3 md:p-6 flex flex-col flex-1">
+                  <h3 className="text-base md:text-xl font-bold text-highlight mb-1">
                     {project.name}
                   </h3>
-                  <p className="text-base opacity-90 mb-3 flex-1">
+                  <p className="text-xs md:text-base opacity-90 mb-2 md:mb-3 flex-1">
                     {project.desc}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 md:gap-2 mb-2 md:mb-4">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 rounded bg-main/30 text-highlight border border-highlight/30 text-xs font-medium"
+                        className="px-1.5 md:px-2 py-0.5 md:py-1 rounded bg-main/30 text-highlight border border-highlight/30 text-[10px] md:text-xs font-medium"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-3 mt-auto">
+                  <div className="flex gap-2 md:gap-3 mt-auto">
                     {project.demo && (
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-full bg-highlight text-main font-semibold shadow hover:bg-secondary transition text-sm"
+                        className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-highlight text-main font-semibold shadow hover:bg-secondary transition text-xs md:text-sm"
                       >
                         Demo
                       </a>
@@ -172,7 +172,7 @@ const Projects = () => {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-full border border-highlight text-highlight font-semibold hover:bg-highlight hover:text-main transition text-sm"
+                        className="px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-highlight text-highlight font-semibold hover:bg-highlight hover:text-main transition text-xs md:text-sm"
                       >
                         GitHub
                       </a>
@@ -185,8 +185,8 @@ const Projects = () => {
         </div>
         {/* Liquid Glass Background Effect */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -top-32 -left-32 w-64 h-64 md:w-96 md:h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-44 h-44 md:w-80 md:h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
         </div>
       </main>
     </div>
