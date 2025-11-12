@@ -16,22 +16,19 @@ L.Icon.Default.mergeOptions({
 
 const Contact = () => {
   const [coords, setCoords] = useState(null);
-  const [locError, setLocError] = useState(null);
-  const defaultCoords = { lat: -6.9175, lng: 107.6191 }; // Bandung
+  // const [locError, setLocError] = useState(null);
+  const defaultCoords = { lat: -7.618529938508299, lng: 109.19567102572405 }; // Lokasi user
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) =>
           setCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-        () =>
-          setLocError(
-            "Tidak dapat mengakses lokasi. Menampilkan lokasi default."
-          ),
+        () => {},
         { timeout: 5000 }
       );
     } else {
-      setLocError("Geolocation tidak didukung browser.");
+      // setLocError("Geolocation tidak didukung browser.");
     }
   }, []);
 
@@ -44,84 +41,29 @@ const Contact = () => {
             Kontak Saya
           </h1>
           <p className="text-center text-secondary mb-6">
-            Silakan hubungi saya melalui form di bawah atau langsung melalui
-            email/telepon.
+            Silakan hubungi saya langsung melalui email, telepon, atau media
+            sosial di bawah ini.
           </p>
-          {/* Form Kontak */}
-          <form className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 flex flex-col gap-4">
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-highlight">
-                Nama
-              </label>
-              <input
-                type="text"
-                className="w-full rounded-lg bg-dark/80 border border-highlight/30 px-4 py-2 text-light focus:outline-none focus:ring-2 focus:ring-highlight"
-                placeholder="Nama Anda"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-highlight">
-                Email
-              </label>
-              <input
-                type="email"
-                className="w-full rounded-lg bg-dark/80 border border-highlight/30 px-4 py-2 text-light focus:outline-none focus:ring-2 focus:ring-highlight"
-                placeholder="email@domain.com"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-highlight">
-                Pesan
-              </label>
-              <textarea
-                className="w-full rounded-lg bg-dark/80 border border-highlight/30 px-4 py-2 text-light focus:outline-none focus:ring-2 focus:ring-highlight"
-                rows={4}
-                placeholder="Tulis pesan Anda..."
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="mt-2 px-6 py-3 rounded-full bg-highlight text-main font-bold shadow hover:bg-secondary transition text-sm border-2 border-highlight flex items-center justify-center gap-2"
-            >
-              Kirim Pesan
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75V19.5A2.25 2.25 0 006.75 21.75h10.5a2.25 2.25 0 002.25-2.25V9.75"
-                />
-              </svg>
-            </button>
-          </form>
+          {/* Form Kontak dihapus, hanya card info kontak yang ditampilkan */}
           {/* Info Kontak Langsung & Sosial Media */}
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 flex flex-col gap-4">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
               <div>
                 <div className="font-semibold text-highlight">Email</div>
                 <a
-                  href="mailto:emailkamu@email.com"
+                  href="mailto:achmadchoerul12345@email.com"
                   className="text-secondary hover:underline"
                 >
-                  emailkamu@email.com
+                  achmadchoerul12345@email.com
                 </a>
               </div>
               <div>
                 <div className="font-semibold text-highlight">Telepon</div>
                 <a
-                  href="tel:+6281234567890"
+                  href="tel:+6281294029308"
                   className="text-secondary hover:underline"
                 >
-                  +62 812-3456-7890
+                  +62 812-9402-9308
                 </a>
               </div>
             </div>
@@ -131,7 +73,7 @@ const Contact = () => {
               </div>
               <div className="flex gap-4">
                 <a
-                  href="https://linkedin.com/in/username"
+                  href="https://www.linkedin.com/in/achmad-choerul-ramdhani-0b237b279/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-highlight transition"
@@ -145,7 +87,7 @@ const Contact = () => {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com/username"
+                  href="https://github.com/choerulram"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-highlight transition"
@@ -165,12 +107,10 @@ const Contact = () => {
             <div>
               <div className="font-semibold text-highlight mb-1">Lokasi</div>
               <div className="text-secondary mb-2">
-                {locError ? (
-                  <span>{locError}</span>
-                ) : coords ? (
+                {coords ? (
                   <span>Lokasi Anda terdeteksi</span>
                 ) : (
-                  <span>Mendeteksi lokasi...</span>
+                  <span>Lokasi rumah saya</span>
                 )}
               </div>
               <div className="rounded-xl overflow-hidden border border-highlight/20 shadow-lg w-full h-72">
