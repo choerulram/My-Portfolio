@@ -34,44 +34,48 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-dark text-light">
-      <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-16 px-4">
-        <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col gap-10">
+      <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-10 md:py-16 px-2 md:px-4">
+        <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col gap-6 md:gap-10">
           {/* Judul */}
-          <h1 className="text-3xl font-bold text-highlight mb-2 text-center">
+          <h1 className="text-2xl md:text-3xl font-bold text-highlight mb-2 text-center">
             Kontak Saya
           </h1>
-          <p className="text-center text-secondary mb-6">
+          <p className="text-center text-secondary mb-4 md:mb-6 text-sm md:text-base">
             Silakan hubungi saya langsung melalui email, telepon, atau media
             sosial di bawah ini.
           </p>
           {/* Form Kontak dihapus, hanya card info kontak yang ditampilkan */}
           {/* Info Kontak Langsung & Sosial Media */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-6 flex flex-col gap-4">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6 flex flex-col gap-3 md:gap-4">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
               <div>
-                <div className="font-semibold text-highlight">Email</div>
+                <div className="font-semibold text-highlight text-sm md:text-base">
+                  Email
+                </div>
                 <a
                   href="mailto:achmadchoerul12345@email.com"
-                  className="text-secondary hover:underline"
+                  className="text-secondary hover:underline text-xs md:text-base"
                 >
                   achmadchoerul12345@email.com
                 </a>
               </div>
               <div>
-                <div className="font-semibold text-highlight">Telepon</div>
+                <div className="font-semibold text-highlight text-sm md:text-base">
+                  Telepon
+                </div>
                 <a
                   href="tel:+6281294029308"
-                  className="text-secondary hover:underline"
+                  className="text-secondary hover:underline text-xs md:text-base"
                 >
                   +62 812-9402-9308
                 </a>
               </div>
             </div>
             <div>
-              <div className="font-semibold text-highlight mb-1">
+              <div className="font-semibold text-highlight mb-1 text-sm md:text-base">
                 Social Media
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-3 md:gap-4">
                 <a
                   href="https://www.linkedin.com/in/achmad-choerul-ramdhani-0b237b279/"
                   target="_blank"
@@ -79,7 +83,7 @@ const Contact = () => {
                   className="hover:text-highlight transition"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -93,7 +97,7 @@ const Contact = () => {
                   className="hover:text-highlight transition"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 md:w-6 md:h-6"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -105,15 +109,17 @@ const Contact = () => {
             </div>
             {/* Lokasi (opsional) */}
             <div>
-              <div className="font-semibold text-highlight mb-1">Lokasi</div>
-              <div className="text-secondary mb-2">
+              <div className="font-semibold text-highlight mb-1 text-sm md:text-base">
+                Lokasi
+              </div>
+              <div className="text-secondary mb-2 text-xs md:text-base">
                 {coords ? (
                   <span>Lokasi Anda terdeteksi</span>
                 ) : (
                   <span>Lokasi rumah saya</span>
                 )}
               </div>
-              <div className="rounded-xl overflow-hidden border border-highlight/20 shadow-lg w-full h-72">
+              <div className="rounded-xl overflow-hidden border border-highlight/20 shadow-lg w-full h-52 md:h-72">
                 <MapContainer
                   center={coords || defaultCoords}
                   zoom={13}
@@ -142,8 +148,8 @@ const Contact = () => {
         </div>
         {/* Liquid Glass Background Effect */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute -top-32 -left-32 w-64 h-64 md:w-96 md:h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-44 h-44 md:w-80 md:h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse" />
         </div>
       </main>
     </div>
