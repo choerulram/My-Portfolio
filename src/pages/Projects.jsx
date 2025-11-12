@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -128,11 +129,30 @@ const Projects = () => {
             ))}
           </div>
           {/* Project Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
+            initial="hidden"
+            animate="show"
+            variants={{
+              hidden: {},
+              show: {
+                transition: { staggerChildren: 0.13, ease: "easeOut" },
+              },
+            }}
+          >
             {filtered.map((project) => (
-              <div
+              <motion.div
                 key={project.name}
                 className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow-lg flex flex-col overflow-hidden"
+                variants={{
+                  hidden: { opacity: 0, y: 30, scale: 0.98 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.6, ease: "easeOut" },
+                  },
+                }}
               >
                 <img
                   src={project.img}
@@ -179,9 +199,9 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
         {/* Liquid Glass Background Effect */}
         <div className="absolute inset-0 z-0 pointer-events-none">
