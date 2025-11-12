@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const education = [
   {
@@ -48,9 +49,21 @@ const organizations = [
 const Resume = () => (
   <div className="min-h-screen flex flex-col bg-dark text-light">
     <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-10 md:py-16 px-2 md:px-4">
-      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col gap-6 md:gap-10">
+      <motion.div
+        className="relative z-10 w-full max-w-3xl mx-auto flex flex-col gap-6 md:gap-10"
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          show: {
+            opacity: 1,
+            y: 0,
+            transition: { staggerChildren: 0.15, ease: "easeOut", duration: 0.7 },
+          },
+        }}
+      >
         {/* Download CV */}
-        <div className="flex justify-end">
+        <motion.div className="flex justify-end" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
           <a
             href="/cv.pdf"
             download
@@ -58,17 +71,20 @@ const Resume = () => (
           >
             Download CV (PDF)
           </a>
-        </div>
+        </motion.div>
         {/* Pendidikan */}
-        <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6">
+        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Pendidikan
           </h2>
           <ul className="space-y-3 md:space-y-4">
             {education.map((edu) => (
-              <li
+              <motion.li
                 key={edu.school}
                 className="flex flex-col md:flex-row md:items-center md:justify-between"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 <div>
                   <span className="font-semibold text-secondary text-sm md:text-base">
@@ -86,18 +102,22 @@ const Resume = () => (
                 <span className="text-xs md:text-sm text-highlight">
                   {edu.year}
                 </span>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </section>
+        </motion.section>
         {/* Pengalaman Kerja */}
-        <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6">
+        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Pengalaman & Magang
           </h2>
           <ul className="space-y-3 md:space-y-4">
             {experience.map((exp) => (
-              <li key={exp.company} className="flex flex-col gap-1">
+              <motion.li key={exp.company} className="flex flex-col gap-1"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <span className="font-semibold text-secondary text-sm md:text-base">
                     {exp.company}
@@ -112,20 +132,23 @@ const Resume = () => (
                 <span className="text-xs md:text-sm opacity-80">
                   {exp.desc}
                 </span>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </section>
+        </motion.section>
         {/* Organisasi/Volunteer */}
-        <section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6">
+        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Organisasi & Kegiatan
           </h2>
           <ul className="space-y-3 md:space-y-4">
             {organizations.map((org) => (
-              <li
+              <motion.li
                 key={org.name}
                 className="flex flex-col md:flex-row md:items-center md:justify-between"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
                 <div className="flex-1">
                   <span className="font-semibold text-secondary text-sm md:text-base">
@@ -143,11 +166,11 @@ const Resume = () => (
                 <span className="text-xs md:text-sm text-highlight">
                   {org.year}
                 </span>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </section>
-      </div>
+        </motion.section>
+  </motion.div>
       {/* Liquid Glass Background Effect */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute -top-32 -left-32 w-64 h-64 md:w-96 md:h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
