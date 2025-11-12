@@ -36,7 +36,7 @@ const About = () => (
             transition={{ type: "spring", stiffness: 280 }}
           >
             <motion.img
-              src="public/assets/images/profile.jpg"
+              src="/assets/images/profile.jpg"
               alt="Foto Profil"
               className="w-32 h-32 md:w-52 md:h-52 rounded-3xl object-cover shadow-inner"
               initial={{ scale: 0.98 }}
