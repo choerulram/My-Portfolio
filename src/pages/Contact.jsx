@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { MapContainer, TileLayer, Marker, LayersControl } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -35,18 +36,47 @@ const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col bg-dark text-light">
       <main className="flex-1 flex flex-col items-center justify-center relative overflow-hidden py-10 md:py-16 px-2 md:px-4">
-        <div className="relative z-10 w-full max-w-2xl mx-auto flex flex-col gap-6 md:gap-10">
+        <motion.div
+          className="relative z-10 w-full max-w-2xl mx-auto flex flex-col gap-6 md:gap-10"
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.15, ease: "easeOut" } },
+          }}
+        >
           {/* Judul */}
-          <h1 className="text-2xl md:text-3xl font-bold text-highlight mb-2 text-center">
+          <motion.h1
+            className="text-2xl md:text-3xl font-bold text-highlight mb-2 text-center"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
             Kontak Saya
-          </h1>
-          <p className="text-center text-secondary mb-4 md:mb-6 text-sm md:text-base">
+          </motion.h1>
+          <motion.p
+            className="text-center text-secondary mb-4 md:mb-6 text-sm md:text-base"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.1 },
+              },
+            }}
+          >
             Silakan hubungi saya langsung melalui email, telepon, atau media
             sosial di bawah ini.
-          </p>
-          {/* Form Kontak dihapus, hanya card info kontak yang ditampilkan */}
+          </motion.p>
           {/* Info Kontak Langsung & Sosial Media */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6 flex flex-col gap-3 md:gap-4">
+          <motion.div
+            className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6 flex flex-col gap-3 md:gap-4"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+            }}
+          >
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-2">
               <div>
                 <div className="font-semibold text-highlight text-sm md:text-base">
@@ -108,7 +138,12 @@ const Contact = () => {
               </div>
             </div>
             {/* Lokasi (opsional) */}
-            <div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+              }}
+            >
               <div className="font-semibold text-highlight mb-1 text-sm md:text-base">
                 Lokasi
               </div>
@@ -143,9 +178,9 @@ const Contact = () => {
                   <Marker position={coords || defaultCoords} />
                 </MapContainer>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
         {/* Liquid Glass Background Effect */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute -top-32 -left-32 w-64 h-64 md:w-96 md:h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
