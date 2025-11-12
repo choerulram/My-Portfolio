@@ -58,22 +58,39 @@ const Resume = () => (
           show: {
             opacity: 1,
             y: 0,
-            transition: { staggerChildren: 0.15, ease: "easeOut", duration: 0.7 },
+            transition: {
+              staggerChildren: 0.15,
+              ease: "easeOut",
+              duration: 0.7,
+            },
           },
         }}
       >
         {/* Download CV */}
-        <motion.div className="flex justify-end" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}>
+        <motion.div
+          className="flex justify-end"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+          }}
+        >
           <a
-            href="/cv.pdf"
-            download
+            href="https://drive.google.com/file/d/1pAHeCVONgkcoeDAKJ_XlsM0VFwXKJerR/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 md:px-6 py-2 md:py-3 rounded-full bg-highlight text-main font-bold shadow hover:bg-secondary transition text-xs md:text-sm border-2 border-highlight"
           >
             Download CV (PDF)
           </a>
         </motion.div>
         {/* Pendidikan */}
-        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
+        <motion.section
+          className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Pendidikan
           </h2>
@@ -107,13 +124,21 @@ const Resume = () => (
           </ul>
         </motion.section>
         {/* Pengalaman Kerja */}
-        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
+        <motion.section
+          className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Pengalaman & Magang
           </h2>
           <ul className="space-y-3 md:space-y-4">
             {experience.map((exp) => (
-              <motion.li key={exp.company} className="flex flex-col gap-1"
+              <motion.li
+                key={exp.company}
+                className="flex flex-col gap-1"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -137,7 +162,13 @@ const Resume = () => (
           </ul>
         </motion.section>
         {/* Organisasi/Volunteer */}
-        <motion.section className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6" variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}>
+        <motion.section
+          className="bg-white/10 backdrop-blur-lg rounded-2xl border border-highlight/20 shadow p-3 md:p-6"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+          }}
+        >
           <h2 className="text-lg md:text-xl font-bold text-highlight mb-3 md:mb-4">
             Organisasi & Kegiatan
           </h2>
@@ -170,7 +201,7 @@ const Resume = () => (
             ))}
           </ul>
         </motion.section>
-  </motion.div>
+      </motion.div>
       {/* Liquid Glass Background Effect */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute -top-32 -left-32 w-64 h-64 md:w-96 md:h-96 bg-highlight/20 rounded-full blur-3xl animate-pulse" />
